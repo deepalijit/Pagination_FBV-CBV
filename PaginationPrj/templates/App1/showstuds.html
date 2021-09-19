@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+{% for stu in page_data %}
+{{ stu.Name }}<br><br>
+{% endfor %}
+
+<br><br>
+<div class="prev_next">
+
+    {% if page_data.has_previous %}
+      <a href="?page={{page_data.previous_page_number}}">Previous</a>
+    {% endif %}
+
+
+    {% for i in page_data.paginator.page_range %}
+    {% if page_data.number == i %}
+        <a href="?page={{ i }}"><span style="color:Red">{{ i }}</span></a>
+      {% else %}
+        <a href="?page={{ i }}">{{ i }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if page_data.has_next %}
+      <a href="?page={{page_data.next_page_number}}">Next</a>
+    {% endif %}
+
+    <span class="clear_both"></span>
+
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+</body>
+</html>
